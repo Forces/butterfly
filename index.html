@@ -5,13 +5,14 @@
 <title>Butterfly lightbox test page</title>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
 <script type='text/javascript' src='jquery.resize-events.js'></script>
+<script type='text/javascript' src='jquery.history.js'></script>
 <script type='text/javascript' src='jquery.pxToEm.js'></script>
 <script type='text/javascript' src='jquery.butterfly.js'></script>
 <script type="text/javascript">
 $(function(){
 	/* Enhance all image links, and internal (relative) links only */
 	//$('a:not([href^="http://"]), a[href$=".jpg"], a[href$=".jpeg"], a[href$=".png"], a[href$=".gif"]').butterfly(options={
-	$('a').butterfly(options={
+	$('#examples a').butterfly(options={
 		contentDefaultWidth: '50em', // for content
 		contentDefaultHeight: '100%', // for content
 		mediaMaxWidth: '100%', // for images
@@ -32,7 +33,9 @@ $(function(){
 });
 </script>
 <link type="text/css" rel="stylesheet" href="butterfly.css" />
-
+<!--[if lt IE 9]>
+	<link type="text/css" rel="stylesheet" href="butterfly-ie.css" />
+<![endif]-->
 <style type="text/css">
 	/*
 		Styles for this page
@@ -88,50 +91,51 @@ $(function(){
     <p>Note: This lightbox effect will not work in IE6, but the fallback (linked content) is still accessible and usable to visitors using IE6.</p>
     <p>Butterfly has been tested and works in Internet Explorer 7&ndash;9, Safari 5, Chrome 11, Opera 11 and Firefox 3&ndash;4.</p>
     
-    <p>Butterfly can link to any content, for example:</p>
-    <ul class="gallery-test">
-        <li><a href="butterfly.jpg" rel="gallery" title="The Cairns Birdwing butterfly">An image (with a caption)</a></li>
-        <li><a href="#same-page-fragment" rel="gallery">A fragment of content from the same page</a></li>
-        <li><a href="external.html" rel="gallery">Anoter page of content (using Ajax)</a></li>
-        <li><a href="external.html#external-fragment" rel="gallery">A fragment from within the external content page</a></li>
-        <li><a href="http://en.wikipedia.org/wiki/Cairns_Birdwing" rel="gallery">External domain, via iframe</a></li>
-    </ul>
-    
-    <p>Test also:</p>
-    <ul>
-        <li>An image with thumbnail (at right) <a href="http://irama.org/assets/images/dhtml/butterfly/butterfly-1.jpg" style="float: right;"><img src="http://irama.org/assets/images/dhtml/butterfly/butterfly-1-preview.jpg" alt="test image" /></a></li>
-        <li><a href="external.html#another-fragment">Another fragment from the external content page</a></li>
-        <li>Try resizing the window and making it quite narrow or short (or change the text size)!</li>
-    </ul>
-   
-    <div class="section" id="gallery">
-        <h2>Gallery</h2>
-        <p>A gallery can be created using a container element or by specifying links with the same <code>rel</code> attribute.</p>
-        <div class="butterfly-gallery-demo">
-        <ul>
-            <li><a href="http://irama.org/assets/images/dhtml/butterfly/butterfly-1.jpg" rel="butterflies"><img src="http://irama.org/assets/images/dhtml/butterfly/butterfly-1-preview.jpg" alt="Cairns Birdwing" /></a></li>
-            <li><a href="http://irama.org/assets/images/dhtml/butterfly/butterfly-2.jpg" rel="butterflies"><img src="http://irama.org/assets/images/dhtml/butterfly/butterfly-2-preview.jpg" alt="Orange butterfly" /></a></li>
-            <li><a href="http://irama.org/assets/images/dhtml/butterfly/butterfly-3.jpg" rel="butterflies"><img src="http://irama.org/assets/images/dhtml/butterfly/butterfly-3-preview.jpg" alt="Blue butterfly" /></a></li>
-            <li><a href="http://irama.org/assets/images/dhtml/butterfly/butterfly-4.jpg" rel="butterflies"><img src="http://irama.org/assets/images/dhtml/butterfly/butterfly-4-preview.jpg" alt="Green butterfly" /></a></li>
+    <div id="examples">
+        <p>Butterfly can link to any content, for example:</p>
+        <ul class="gallery-test">
+            <li><a href="butterfly.jpg" rel="gallery" title="The Cairns Birdwing butterfly">An image (with a caption)</a></li>
+            <li><a href="#same-page-fragment" rel="gallery">A fragment of content from the same page</a></li>
+            <li><a href="external.html" rel="gallery">Anoter page of content (using Ajax)</a></li>
+            <li><a href="external.html#external-fragment" rel="gallery">A fragment from within the external content page</a></li>
+            <li><a href="http://en.wikipedia.org/wiki/Cairns_Birdwing" rel="gallery">External domain, via iframe</a></li>
         </ul>
+        
+        <p>Test also:</p>
+        <ul>
+            <li>An image with thumbnail (at right) <a href="http://irama.org/assets/images/dhtml/butterfly/butterfly-1.jpg" style="float: right;"><img src="http://irama.org/assets/images/dhtml/butterfly/butterfly-1-preview.jpg" alt="test image" /></a></li>
+            <li><a href="external.html#another-fragment">Another fragment from the external content page</a></li>
+            <li>Try resizing the window and making it quite narrow or short (or change the text size)!</li>
+        </ul>
+       
+        <div class="section" id="gallery">
+            <h2>Gallery</h2>
+            <p>A gallery can be created using a container element or by specifying links with the same <code>rel</code> attribute.</p>
+            <div class="butterfly-gallery-demo">
+            <ul>
+                <li><a href="http://irama.org/assets/images/dhtml/butterfly/butterfly-1.jpg" rel="butterflies"><img src="http://irama.org/assets/images/dhtml/butterfly/butterfly-1-preview.jpg" alt="Cairns Birdwing" /></a></li>
+                <li><a href="http://irama.org/assets/images/dhtml/butterfly/butterfly-2.jpg" rel="butterflies"><img src="http://irama.org/assets/images/dhtml/butterfly/butterfly-2-preview.jpg" alt="Orange butterfly" /></a></li>
+                <li><a href="http://irama.org/assets/images/dhtml/butterfly/butterfly-3.jpg" rel="butterflies"><img src="http://irama.org/assets/images/dhtml/butterfly/butterfly-3-preview.jpg" alt="Blue butterfly" /></a></li>
+                <li><a href="http://irama.org/assets/images/dhtml/butterfly/butterfly-4.jpg" rel="butterflies"><img src="http://irama.org/assets/images/dhtml/butterfly/butterfly-4-preview.jpg" alt="Green butterfly" /></a></li>
+            </ul>
+            </div>
+        </div>
+        
+        <div class="section" id="same-page-fragment">
+            <h2>A fragment of this page</h2>
+            The <a href="butterfly.jpg">Cairns Birdwing</a> (<em>Ornithoptera euphorion</em>) is Australia's  largest endemic butterfly species, with females reaching a wingspan of  up to 16 cm. Males are usually a few centimeters smaller. A closely  allied species, the New Guinea or Priam's Birdwing (<em>Ornithoptera priamus</em>)  reaches 19 cm and is the largest butterfly species found in Australia,  but it is not endemic. Cairns Birdwings are found southwards from Mount  Webb and Cooktown to Mackay in Queensland. Its favoured habitat is  primary rainforest, although the species will breed readily in a home  garden if the correct larval host plants are grown. (via <a href="http://en.wikipedia.org/wiki/Cairns_Birdwing">Wikipedia</a>)</div>
+            
+            <div class="section" id="error-handling">
+                <h2>Error handling</h2>
+                <p>These links are all broken:</p>
+                <ul>
+                    <li><a href="butterfly-error.jpg">A broken image</a></li>
+                    <li><a href="#fragment-error">A non-existent fragment</a></li>
+                    <li><a href="external-error.html">A non-page</a></li>
+                    <li><a href="external.html#fragment-error">A non-existent fragment from within a real external content page</a></li>
+                </ul>
+            </div>
         </div>
     </div>
-    
-    <div class="section" id="same-page-fragment">
-        <h2>A fragment of this page</h2>
-        The <a href="butterfly.jpg">Cairns Birdwing</a> (<em>Ornithoptera euphorion</em>) is Australia's  largest endemic butterfly species, with females reaching a wingspan of  up to 16 cm. Males are usually a few centimeters smaller. A closely  allied species, the New Guinea or Priam's Birdwing (<em>Ornithoptera priamus</em>)  reaches 19 cm and is the largest butterfly species found in Australia,  but it is not endemic. Cairns Birdwings are found southwards from Mount  Webb and Cooktown to Mackay in Queensland. Its favoured habitat is  primary rainforest, although the species will breed readily in a home  garden if the correct larval host plants are grown. (via <a href="http://en.wikipedia.org/wiki/Cairns_Birdwing">Wikipedia</a>)</div>
-        
-        <div class="section" id="error-handling">
-            <h2>Error handling</h2>
-            <p>These links are all broken:</p>
-            <ul>
-                <li><a href="butterfly-error.jpg">A broken image</a></li>
-                <li><a href="#fragment-error">A non-existent fragment</a></li>
-                <li><a href="external-error.html">A non-page</a></li>
-                <li><a href="external.html#fragment-error">A non-existent fragment from within a real external content page</a></li>
-            </ul>
-        </div>
-	</div>
-
 </body>
 </html>
