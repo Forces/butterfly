@@ -154,13 +154,13 @@ jQuery.butterfly.linkCount = 0;
 		
 		
 		// Pre-load images
-			if (options.closeButtonImage != '') {
+			if (typeof options.closeButtonImage !== 'undefined' && options.closeButtonImage != '') {
 				$('<img src="'+options.closeButtonImage+'" alt="" />');
 			}
-			if (options.preloadLoadingImage != '') {
+			if (typeof options.preloadLoadingImage !== 'undefined' && options.preloadLoadingImage != '') {
 				$('<img src="'+options.preloadLoadingImage+'" alt="" />');
 			}
-			if (options.preloadGalleryControlsSprite != '') {
+			if (typeof options.preloadGalleryControlsSprite !== 'undefined' && options.preloadGalleryControlsSprite != '') {
 				$('<img src="'+options.preloadGalleryControlsSprite+'" alt="" />');
 			}
 			
