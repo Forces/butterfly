@@ -5,7 +5,7 @@
  * jquery.butterfly is a fairly light-weight and fully accessible lightbox implementation for jQuery.
  * 
  * jquery.butterfly.js
- * @version 0.9
+ * @version 0.91
  * Changelog:
  *   *  0.1 Initial implementation.
  *   *  0.2: Support for window resizing added.
@@ -16,6 +16,7 @@
  *   *  0.7: Captions can be configured to come from link title attribute, link text (including any img alt text within), or not be displayed at all.
  *   *  0.8: Added ability to load pages in an iFrame (kicks in automatically for external-domain URLs).
  *   *  0.9: Support restored for IE6 (all thanks to the perseverance of github.com/bboyle - he has more patience than I). Added support for back button (through jquery.history.js)
+ *   *  0.91: Renamed class .caption to .jb-caption to reduce risk of conflicts
  *
  * @author Andrew Ramsden <http://irama.org/>
  * @see http://irama.org/web/dhtml/butterfly/
@@ -737,10 +738,10 @@ jQuery.butterfly.linkCount = 0;
 		// Populate caption
 			switch (options.captionMode) {
 				case 'title':
-					caption = options.title ? '<p class=\'caption\'>' + options.title + '</p>':'';
+					caption = options.title ? '<p class=\'jb-caption\'>' + options.title + '</p>':'';
 				break;
 				case 'text':
-					caption = options.linkText ? '<p class=\'caption\'>' + options.linkText + '</p>':'';
+					caption = options.linkText ? '<p class=\'jb-caption\'>' + options.linkText + '</p>':'';
 				break;
 				default:
 					caption = '';

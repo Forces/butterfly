@@ -1,6 +1,6 @@
 /**
  * jquery.butterfly.js
- * @version 0.9
+ * @version 0.91
  * @see http://irama.org/web/dhtml/butterfly/
  * @license GNU GENERAL PUBLIC LICENSE (GPL) <http://www.gnu.org/licenses/gpl.html>
  */
@@ -72,7 +72,7 @@
 	outline: none;
 }
 
-#jb-window-content .caption {
+#jb-window-content .jb-caption {
 	display: block;
 	clear: both;
 	margin: 0;
