@@ -39,7 +39,7 @@ jQuery.butterfly.defaultOptions = {
 	mediaMaxWidth : '100%', // For images (can be em, % or px)
 	mediaMaxHeight : '100%', // For images (can be em, % or px)
 	treatAsMedia : false, // Set to true for content to be resized as if it's media (good for video content)
-	lightBoxMargin : null, // Margin around screen (can be em, % or px) - null default == 2em if pxToEm is available or 20px otherwise
+	lightBoxMargin : null, // Margin around screen (can be em, % or px) - null default === 2em if pxToEm is available or 20px otherwise
 	animateResize : true,
 	animationSpeed : 150,
 	useIframe : 'autodetect', // load contents in an iframe (good for cross-domain URLs). Options are : 'autodetect' (will load iframe for external URLs), true (will load in an iframe). false (will atempt to load with ajax).
@@ -98,7 +98,7 @@ DOM_VK_ESCAPE = 27;
 		*/
 
 		// If ResizeEvents plugin is available, listen for resize events
-		if ( typeof ResizeEvents != 'undefined' ) {
+		if ( typeof ResizeEvents !== 'undefined' ) {
 			$( this ).each(function() {
 				ResizeEvents.bind(
 					'x-text-resize x-window-resize', // no need to catch 'x-initial-sizes', lightbox not open initially
@@ -132,7 +132,7 @@ DOM_VK_ESCAPE = 27;
 
 		$.history.init(
 			function( hash ) {
-				if( hash == "" ) {
+				if( hash === "" ) {
 					closeLightBox.apply();
 				} else {
 					// restore the state from hash
@@ -154,16 +154,16 @@ DOM_VK_ESCAPE = 27;
 			return;
 		}*/
 
-		options = typeof options != 'undefined' ? options : {};
+		options = typeof options !== 'undefined' ? options : {};
 
 		// Pre-load images
-		if ( typeof options.closeButtonImage !== 'undefined' && options.closeButtonImage != '' ) {
+		if ( typeof options.closeButtonImage !== 'undefined' && options.closeButtonImage !== '' ) {
 			$( '<img src="' + options.closeButtonImage + '" alt="" />' );
 		}
-		if ( typeof options.preloadLoadingImage !== 'undefined' && options.preloadLoadingImage != '' ) {
+		if ( typeof options.preloadLoadingImage !== 'undefined' && options.preloadLoadingImage !== '' ) {
 			$( '<img src="' + options.preloadLoadingImage + '" alt="" />' );
 		}
-		if ( typeof options.preloadGalleryControlsSprite !== 'undefined' && options.preloadGalleryControlsSprite != '' ) {
+		if ( typeof options.preloadGalleryControlsSprite !== 'undefined' && options.preloadGalleryControlsSprite !== '' ) {
 			$( '<img src="' + options.preloadGalleryControlsSprite + '" alt="" />' );
 		}
 
@@ -181,24 +181,24 @@ DOM_VK_ESCAPE = 27;
 		// Merge runtime options with defaults
 		// Note : The first argument sent to extend is an empty object to
 		// prevent extend from overriding the default $.AKN.defaultOptions object.
-		options = ( typeof options == 'undefined' )
+		options = ( typeof options === 'undefined' )
 			? $.butterfly.defaultOptions
 			: $.extend({}, $.butterfly.defaultOptions, options )
 		;
 
-		pxToEmExists = ( typeof Number.prototype.pxToEm != 'undefined' ) ? true : false;
+		pxToEmExists = ( typeof Number.prototype.pxToEm !== 'undefined' ) ? true : false;
 
-		if ( options.lightBoxMargin == null ) {
+		if ( options.lightBoxMargin === null ) {
 			// if no margin specified, use 2em if pxToEm available, otherwise use 20px
 			options.lightBoxMargin = pxToEmExists ? '2em' : '20px' ;
 		}
-		if ( options.contentDefaultWidth == null ) {
+		if ( options.contentDefaultWidth === null ) {
 			// if no default width specified, use 50em if pxToEm available, otherwise use 700px (good line lengths for legibility )
 			options.contentDefaultWidth = pxToEmExists ? '50em' : '700px' ;
 		}
 
 		// Assign an id if none exists
-		if ( typeof $( this ).attr( 'id' ) == 'undefined' || $( this ).attr( 'id' ) == '' ) { // cater for jquery 1.6 and previous versions
+		if ( typeof $( this ).attr( 'id' ) === 'undefined' || $( this ).attr( 'id' ) === '' ) { // cater for jquery 1.6 and previous versions
 			$( this ).attr( 'id', $.butterfly.conf.lightboxClass + '-uid-' + $.butterfly.linkCount );
 		}
 		options.linkID = $( this ).attr( 'id' );
@@ -211,7 +211,7 @@ DOM_VK_ESCAPE = 27;
 
 
 	openLightBox = function( e, storeState ) {
-		if ( typeof e != 'undefined' ) {
+		if ( typeof e !== 'undefined' ) {
 			e.preventDefault(); // so that links aren't followed
 		}
 
@@ -228,7 +228,7 @@ DOM_VK_ESCAPE = 27;
 		// if lightbox is open already and fragment was reused... clean up
 		if ( $( '#jb-overlay' ).is( ':visible' )) {
 			options = $( '#jb-overlay' ).data( 'options' );
-			if ( options.linkType == 'fragment' && options.reuseFragment ) {
+			if ( options.linkType === 'fragment' && options.reuseFragment ) {
 				$( '.jb-placeholder' ).after( $( href ));
 				$( '.jb-placeholder' ).remove();
 			}
@@ -252,9 +252,9 @@ DOM_VK_ESCAPE = 27;
 		options.originalTrigger = originalTrigger; // original trigger element
 		if ( isImage( href )) {
 			options.linkType = 'image';
-		} else if ( href.substring( 0, 1 ) == '#' ) {
+		} else if ( href.substring( 0, 1 ) === '#' ) {
 			options.linkType = 'fragment';
-		} else if ( options.useIframe === true || ( options.useIframe !== false && this.hostname != window.location.hostname )) {
+		} else if ( options.useIframe === true || ( options.useIframe !== false && this.hostname !== window.location.hostname )) {
 			options.linkType = 'iframe';
 			options.useIframe = true;
 			options.contentDefaultWidth = '100%';
@@ -264,13 +264,13 @@ DOM_VK_ESCAPE = 27;
 		}
 
 		// run preOpen callback function
-		if ( options.callbackPreOpen != null && typeof options.callbackPreOpen == 'function' ) {
+		if ( options.callbackPreOpen !== null && typeof options.callbackPreOpen === 'function' ) {
 			options.callbackPreOpen.apply( this );
 		}
 
 		// add/remove close button
 		if ( options.closeButton ) {
-			if ( $( '#jb-close-button' ).length == 0 ) {
+			if ( $( '#jb-close-button' ).length === 0 ) {
 				$( '#jb-window' ).prepend( '<a href="#" id="jb-close-button"><img src="' + options.closeButtonImage + '" alt="Close lightbox" /></a>' );
 				$( '#jb-close-button' ).click( closeLightBox );
 			}
@@ -287,7 +287,7 @@ DOM_VK_ESCAPE = 27;
 
 		// Find and store details of gallery (if configured)
 		thisLink = $( this );
-		if ( options.galleryContainers != '' ) {
+		if ( options.galleryContainers !== '' ) {
 			options.galleryMode = 'container';
 		}
 		options.gallerySelector = '';
@@ -308,7 +308,7 @@ DOM_VK_ESCAPE = 27;
 				});
 			// break;
 			case 'rel' : // process rel even when in container mode (but only if not in a container )
-				if ( options.gallerySelector == '' && $( this ).attr( 'rel' ) != '' ) {
+				if ( options.gallerySelector === '' && $( this ).attr( 'rel' ) !== '' ) {
 					options.gallerySelector = $.butterfly.conf.lightboxLinkSelector + '[ rel="' + $( this ).attr( 'rel' ) + '"]';
 				}
 			break;
@@ -329,7 +329,7 @@ DOM_VK_ESCAPE = 27;
 			// if lightbox is open:
 
 			// cleanup after fragment positioning
-			if ( previousOptions.linkType == 'fragment' && previousOptions.reuseFragment ) {
+			if ( previousOptions.linkType === 'fragment' && previousOptions.reuseFragment ) {
 				$( '.jb-placeholder' ).after( $( previousOptions.href ));
 				$( '.jb-placeholder' ).remove();
 				$( previousOptions.href ).disableFocussableElements();
@@ -434,7 +434,7 @@ DOM_VK_ESCAPE = 27;
 			// resize
 			resizeLightBox.apply( this, [ function() {
 
-				if ( options.linkType == 'iframe' ) {
+				if ( options.linkType === 'iframe' ) {
 					$( '#jb-window-content' ).css( 'visibility', 'visible' );
 				}
 				// fade in new content
@@ -450,7 +450,7 @@ DOM_VK_ESCAPE = 27;
 					$( '#jb-loading' ).remove();
 
 					// run postOpen callback function
-					if ( options.callbackPostOpen != null && typeof options.callbackPostOpen == 'function' ) {
+					if ( options.callbackPostOpen !== null && typeof options.callbackPostOpen === 'function' ) {
 						options.callbackPostOpen.apply( this );
 					}
 
@@ -460,7 +460,7 @@ DOM_VK_ESCAPE = 27;
 						options.preloadNextGalleryImage && 
 						nextControl.length > 0 && 
 						nextControl.is( ':visible' ) && 
-						nextControl.attr( 'href' ) != '#' && 
+						nextControl.attr( 'href' ) !== '#' && 
 						isImage( nextControl.attr( 'href' ))
 					 ) {
 						$( '<img src="' + nextControl.attr( 'href' ) + '" alt="" />' );
@@ -474,7 +474,7 @@ DOM_VK_ESCAPE = 27;
 	resizeLightBox = function( callback ) {
 
 		options = $( '#jb-overlay' ).data( 'options' );
-		if ( typeof options == 'undefined' ) {
+		if ( typeof options === 'undefined' ) {
 			return; // options haven't been assigned to lightbox overlay yet
 		}
 
@@ -490,13 +490,13 @@ DOM_VK_ESCAPE = 27;
 		mediaMaxHeight = parsePixels( options.mediaMaxHeight, availableHeight );
 
 		// run preResize callback function
-		if ( options.callbackPreResize != null && typeof options.callbackPreResize == 'function' ) {
+		if ( options.callbackPreResize !== null && typeof options.callbackPreResize === 'function' ) {
 			options.callbackPreResize.apply( $( '#jb-window' ), [ availableWidth, availableHeight, contentDefaultWidth, contentDefaultHeight, mediaMaxWidth, mediaMaxHeight ]);
 		}
 
 		/*// IE6 needs help with resizing the overlay and window
 		if (
-			$.browser.msie && $.browser.version == 6
+			$.browser.msie && $.browser.version === 6
 		 ) {
 
 			$( '#jb-overlay, #jb-window' ).css({
@@ -510,7 +510,7 @@ DOM_VK_ESCAPE = 27;
 		}
 			*/
 
-		if ( options.linkType == 'image' || options.treatAsMedia ) {
+		if ( options.linkType === 'image' || options.treatAsMedia ) {
 
 			// measure content size
 			w = $( '#jb-window-content' ).lightBoxContentWidth();
@@ -546,7 +546,7 @@ DOM_VK_ESCAPE = 27;
 			// $.debug( 'max img width = ' + options.mediaMaxWidth );
 			// $.debug( 'max img height = ' + options.mediaMaxHeight );
 
-		} else if ( options.linkType == 'iframe' ) {
+		} else if ( options.linkType === 'iframe' ) {
 			w = contentDefaultWidth;
 			h = contentDefaultHeight;
 
@@ -561,8 +561,8 @@ DOM_VK_ESCAPE = 27;
 			w = $( '#jb-window-content' ).lightBoxContentWidth();
 
 			if (
-				contentDefaultWidth == '' ||
-				contentDefaultWidth == '100%' ||
+				contentDefaultWidth === '' ||
+				contentDefaultWidth === '100%' ||
 				availableWidth < contentDefaultWidth
 			 ) {
 				w = availableWidth;
@@ -596,8 +596,8 @@ DOM_VK_ESCAPE = 27;
 				// same height for all content boxes (based on contentDefaultHeight)
 				h = $( '#jb-window-content' ).lightBoxContentHeight();
 				if (
-					contentDefaultHeight == '' ||
-					contentDefaultHeight == '100%' ||
+					contentDefaultHeight === '' ||
+					contentDefaultHeight === '100%' ||
 					availableHeight < contentDefaultHeight
 				 ) {
 					h = availableHeight;
@@ -621,7 +621,7 @@ DOM_VK_ESCAPE = 27;
 		$( '#jb-close-button' ).hide();
 		$( '#jb-gallery-controls' ).hide();
 
-		if ( options.linkType == 'iframe' ) {
+		if ( options.linkType === 'iframe' ) {
 			$( '#jb-window-inner iframe' ).css( 'visibility', 'hidden' );
 		}
 
@@ -636,7 +636,7 @@ DOM_VK_ESCAPE = 27;
 			h = $( '#jb-window-inner' ).height();
 
 			// Show iframe
-			if ( options.linkType == 'iframe' ) {
+			if ( options.linkType === 'iframe' ) {
 				$( '#jb-window-inner iframe' )
 					.width( w )
 					.height( h )
@@ -698,11 +698,11 @@ DOM_VK_ESCAPE = 27;
 			}
 
 			// run postResize callback function
-			if ( options.callbackPostResize != null && typeof options.callbackPostResize == 'function' ) {
+			if ( options.callbackPostResize !== null && typeof options.callbackPostResize === 'function' ) {
 				options.callbackPostResize.apply( $( '#jb-window' ), [ availableWidth, availableHeight, contentDefaultWidth, contentDefaultHeight, mediaMaxWidth, mediaMaxHeight ]);
 			}
 
-			if ( typeof callback != 'undefined' && typeof callback.apply != 'undefined' ) {
+			if ( typeof callback !== 'undefined' && typeof callback.apply !== 'undefined' ) {
 				callback.apply();
 			}
 		});
@@ -738,7 +738,7 @@ DOM_VK_ESCAPE = 27;
 		if ( gallerySet.length > 1 && gallerySet.isInSet( '#' + options.linkID )) {
 
 			// Setup the HTML for the gallery controls
-			if ( $( '#jb-gallery-controls' ).length == 0 ) {
+			if ( $( '#jb-gallery-controls' ).length === 0 ) {
 				$( '#jb-window' ).append( '<div id="jb-gallery-controls"></div>' );
 				prevControl = $( '<a id="jb-gallery-prev" href="#">Previous</a>' ).click( galleryControlsClick );
 				nextControl = $( '<a id="jb-gallery-next" href="#">Next</a>' ).click( galleryControlsClick );
@@ -763,7 +763,7 @@ DOM_VK_ESCAPE = 27;
 
 			// Find previous link
 			prevLink = gallerySet.prevInSet( '#' + options.linkID );
-			if ( prevLink == false ) {
+			if ( prevLink === false ) {
 				if ( options.galleryLoops ) {
 					prevLink = gallerySet.lastInSet();
 				} else {
@@ -782,7 +782,7 @@ DOM_VK_ESCAPE = 27;
 
 			// Find next link
 			nextLink = gallerySet.nextInSet( '#' + options.linkID );
-			if ( nextLink == false ) {
+			if ( nextLink === false ) {
 				if ( options.galleryLoops ) {
 					nextLink = gallerySet.firstInSet();
 				} else {
@@ -862,7 +862,7 @@ DOM_VK_ESCAPE = 27;
 				$.ajaxSetup ({
 					cache : true
 				});
-				if ( href.indexOf( '#' ) != -1 ) {
+				if ( href.indexOf( '#' ) !== -1 ) {
 					ajaxHref = href.split( '#' ).join( ' #' );
 				} else {
 					ajaxHref = href;
@@ -883,7 +883,7 @@ DOM_VK_ESCAPE = 27;
 
 		// checkForContent only called for images on .error()
 		// otherwise, if no children() exist
-		if ( linkType == 'image' || $( '#jb-window-content' ).children().length == 0 ) {
+		if ( linkType === 'image' || $( '#jb-window-content' ).children().length === 0 ) {
 			wasError = true;
 		}
 
@@ -898,7 +898,7 @@ DOM_VK_ESCAPE = 27;
 			;
 			$( '#jb-window-content' ).empty().append( '<p>There was an error loading lightbox content. <strong>' + $( options.trigger ).text() + '</strong> (<samp>' + href + '</samp> ) could not be found.</p>' );
 		}
-		if ( typeof callback != 'undefined' ) {
+		if ( typeof callback !== 'undefined' ) {
 			callback.apply( this );
 		}
 	};
@@ -918,12 +918,12 @@ DOM_VK_ESCAPE = 27;
 		href = options.href;
 
 		// run preClose callback function
-		if ( options.callbackPreClose != null && typeof options.callbackPreClose == 'function' ) {
+		if ( options.callbackPreClose !== null && typeof options.callbackPreClose === 'function' ) {
 			options.callbackPreClose.apply( options.trigger );
 		}
 
 		// cleanup after fragment positioning
-		if ( options.linkType == 'fragment' && options.reuseFragment ) {
+		if ( options.linkType === 'fragment' && options.reuseFragment ) {
 			$( '.jb-placeholder' ).after( $( href ));
 			$( '.jb-placeholder' ).remove();
 		}
@@ -937,7 +937,7 @@ DOM_VK_ESCAPE = 27;
 
 		// return focus to original trigger element
 		originalTriggerEL = $( options.originalTrigger );
-		if ( typeof originalTriggerEL.attr( 'tabindex' ) == 'undefined' ) {
+		if ( typeof originalTriggerEL.attr( 'tabindex' ) === 'undefined' ) {
 			originalTriggerEL.attr( 'tabindex', 0 );
 		}
 		originalTriggerEL.focus();
@@ -946,7 +946,7 @@ DOM_VK_ESCAPE = 27;
 		$( '#jb-loading' ).remove();
 
 		// run postClose callback function
-		if ( options.callbackPostClose != null && typeof options.callbackPostClose == 'function' ) {
+		if ( options.callbackPostClose !== null && typeof options.callbackPostClose === 'function' ) {
 			options.callbackPostClose.apply( options.trigger );
 		}
 	};
@@ -969,10 +969,10 @@ DOM_VK_ESCAPE = 27;
 		// relax size for measurement
 		if (
 			$.browser.msie &&
-			$.browser.version == 7 &&
+			$.browser.version === 7 &&
 			isImageType &&
 			isImageMedia && 
-			$( this ).find( 'img' ).outerWidth({ margin : true }) == 0 // IE7 width == 0 on initial load
+			$( this ).find( 'img' ).outerWidth({ margin : true }) === 0 // IE7 width === 0 on initial load
 		 ) { // only works with '100%' for IE7 on initial load
 			jbWindowInner.css({
 				width : '100%',
@@ -990,7 +990,7 @@ DOM_VK_ESCAPE = 27;
 		}
 
 		// if element is hidden, unhide it, then measure
-		if ( $( this ).css( 'display' ) == 'none' ) {
+		if ( $( this ).css( 'display' ) === 'none' ) {
 
 			// make element display for a nanosecond
 				$( this ).css( 'display', 'block' );
@@ -1026,7 +1026,7 @@ DOM_VK_ESCAPE = 27;
 	 */
 	$.fn.lightBoxContentHeight = function( relaxWidth ) {
 
-		relaxWidth = typeof relaxWidth != 'undefined' ? relaxWidth : true;
+		relaxWidth = typeof relaxWidth !== 'undefined' ? relaxWidth : true;
 		jbWindow = $( this ).closest( '#jb-window' );
 		isImageType = jbWindow.hasClass( 'type-media' ) ? true : false;
 		isImageMedia = jbWindow.hasClass( 'media-image' ) ? true : false;
@@ -1040,10 +1040,10 @@ DOM_VK_ESCAPE = 27;
 		// relax size for measurement
 		if (
 			$.browser.msie && 
-			$.browser.version == 7 && 
+			$.browser.version === 7 && 
 			isImageType && 
 			isImageMedia &&
-			$( this ).find( 'img' ).outerWidth({ margin : true }) == 0 // IE7 width == 0 on initial load
+			$( this ).find( 'img' ).outerWidth({ margin : true }) === 0 // IE7 width === 0 on initial load
 		 ) { // only works with '100%' for IE7 on initial load
 			$( '#jb-window-inner' ).height( '100%' );
 			if ( relaxWidth ) {
@@ -1057,7 +1057,7 @@ DOM_VK_ESCAPE = 27;
 		}
 
 		// if element is hidden, unhide it, then measure
-		if ( $( this ).css( 'display' ) == 'none' ) {
+		if ( $( this ).css( 'display' ) === 'none' ) {
 
 			// make element display for a nanosecond
 			$( this ).css( 'display', 'block' );
@@ -1086,7 +1086,7 @@ DOM_VK_ESCAPE = 27;
 	overlayClicked = function( evt ) {
 		options = $( '#jb-overlay' ).data( 'options' );
 
-		if ( evt.target == $( '#jb-window' ).get( 0 ) && options.clickOverlayCloses ) {
+		if ( evt.target === $( '#jb-window' ).get( 0 ) && options.clickOverlayCloses ) {
 			closeLightBox.apply();
 		} else {
 			// do nothing
@@ -1151,7 +1151,7 @@ DOM_VK_ESCAPE = 27;
 		// Prevent default action
 		evt.preventDefault();
 		// find the gallery link, and activate it
-		if ( $( this ).data( 'linkID' ) != '' ) {
+		if ( $( this ).data( 'linkID' ) !== '' ) {
 
 			$( '#jb-gallery-controls' ).hide(); // hide gallery controls for the transition
 
@@ -1248,7 +1248,7 @@ DOM_VK_ESCAPE = 27;
 	 * Dump debug messages to // console if available, otherwise to status bar.
 	 */
 	$.debug = function( message ) {
-		if ( typeof window.console != 'undefined' && window.console.log != 'undefined' ) {
+		if ( typeof window.console !== 'undefined' && window.console.log !== 'undefined' ) {
 			window.console.log( message );
 		} else {
 			// un comment next line if testing IE6 issues in dev environment (don't use for production )
@@ -1262,11 +1262,11 @@ DOM_VK_ESCAPE = 27;
 	 */
 	isImage = function( fileName ) {
 
-		if ( typeof fileName == 'undefined' || fileName == '' ) {
+		if ( typeof fileName === 'undefined' || fileName === '' ) {
 			return false;
 		}
 		var pos = ( fileName + '' ).lastIndexOf( "." );
-		if ( pos == -1 ) {
+		if ( pos === -1 ) {
 			return false;
 		} else {
 			var extension = fileName.substring( pos );
@@ -1311,7 +1311,7 @@ DOM_VK_ESCAPE = 27;
 		focussable = $( this ).find( 'a, input, button, area, frame, iframe, [ tabindex ]' ).not( excludeElements ).not( '*[ tabindex="-1"]' );
 
 		focussable.each(function() {
-			prevTabIndex = typeof ( prevTabIndex = $( this ).attr( 'tabindex' )) == 'undefined' || prevTabIndex == '' ? '' : prevTabIndex;
+			prevTabIndex = typeof ( prevTabIndex = $( this ).attr( 'tabindex' )) === 'undefined' || prevTabIndex === '' ? '' : prevTabIndex;
 			$( this )
 				.data( 'prevTabIndex', prevTabIndex )
 				.addClass( 'jb-unfocussed' )
@@ -1381,7 +1381,7 @@ DOM_VK_ESCAPE = 27;
 	 */
 	parsePixels = function( input, centDimension ) {
 
-		centDimension = typeof centDimension != 'undefined' ? centDimension : $( 'body' ).width() ;
+		centDimension = typeof centDimension !== 'undefined' ? centDimension : $( 'body' ).width() ;
 
 		input = input
 			.replace( 'px', '' ) // remove px units if present
@@ -1391,10 +1391,10 @@ DOM_VK_ESCAPE = 27;
 		if ( ! isNaN( input )) {
 			// int already, return as pixels
 				return parseInt( input, 10 );
-		} else if ( input.substr( input.length - 1 ) == '%' ) {
+		} else if ( input.substr( input.length - 1 ) === '%' ) {
 			// %, convert to pixels
 
-				if ( typeof centDimension != 'undefined' ) {
+				if ( typeof centDimension !== 'undefined' ) {
 					input = parseInt( input
 						.substr( 0, input.length - 1 ) // strip unit
 						.replace( /^\s + |\s + $/g, "" ) // trim
@@ -1405,9 +1405,9 @@ DOM_VK_ESCAPE = 27;
 					return parseInt( input, 10 );
 				}
 
-		} else if ( input.substr( input.length - 2 ) == 'em' ) {
+		} else if ( input.substr( input.length - 2 ) === 'em' ) {
 			// em, check for pxToEm and convert (or warn )
-				if ( typeof Number.prototype.pxToEm != 'undefined' ) {
+				if ( typeof Number.prototype.pxToEm !== 'undefined' ) {
 					input = parseInt( input
 						.substr( 0, input.length - 2 ) // strip unit
 						.replace( /^\s + |\s + $/g, "" ) // trim
