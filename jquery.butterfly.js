@@ -270,7 +270,7 @@ DOM_VK_ESCAPE = 27;
 
 		// add/remove close button
 		if ( options.closeButton ) {
-			if ( $( '#jb-close-button' ).size() == 0 ) {
+			if ( $( '#jb-close-button' ).length == 0 ) {
 				$( '#jb-window' ).prepend( '<a href="#" id="jb-close-button"><img src="' + options.closeButtonImage + '" alt="Close lightbox" /></a>' );
 				$( '#jb-close-button' ).click( closeLightBox );
 			}
@@ -458,7 +458,7 @@ DOM_VK_ESCAPE = 27;
 					nextControl = $( '#jb-gallery-next' );
 					if (
 						options.preloadNextGalleryImage && 
-						nextControl.size() > 0 && 
+						nextControl.length > 0 && 
 						nextControl.is( ':visible' ) && 
 						nextControl.attr( 'href' ) != '#' && 
 						isImage( nextControl.attr( 'href' ))
@@ -645,7 +645,7 @@ DOM_VK_ESCAPE = 27;
 			}
 
 			// Show close button
-			if ( $( '#jb-close-button' ).size() > 0 ) {
+			if ( $( '#jb-close-button' ).length > 0 ) {
 				buttonWidth = parseInt( $( '#jb-close-button' ).width(), 10 );
 				buttonHeight = parseInt( $( '#jb-close-button' ).height(), 10 );
 
@@ -735,10 +735,10 @@ DOM_VK_ESCAPE = 27;
 		gallerySet = $( options.gallerySelector );
 
 		$( '#jb-gallery-controls' ).removeClass( 'active' );
-		if ( gallerySet.size() > 1 && gallerySet.isInSet( '#' + options.linkID )) {
+		if ( gallerySet.length > 1 && gallerySet.isInSet( '#' + options.linkID )) {
 
 			// Setup the HTML for the gallery controls
-			if ( $( '#jb-gallery-controls' ).size() == 0 ) {
+			if ( $( '#jb-gallery-controls' ).length == 0 ) {
 				$( '#jb-window' ).append( '<div id="jb-gallery-controls"></div>' );
 				prevControl = $( '<a id="jb-gallery-prev" href="#">Previous</a>' ).click( galleryControlsClick );
 				nextControl = $( '<a id="jb-gallery-next" href="#">Next</a>' ).click( galleryControlsClick );
@@ -883,7 +883,7 @@ DOM_VK_ESCAPE = 27;
 
 		// checkForContent only called for images on .error()
 		// otherwise, if no children() exist
-		if ( linkType == 'image' || $( '#jb-window-content' ).children().size() == 0 ) {
+		if ( linkType == 'image' || $( '#jb-window-content' ).children().length == 0 ) {
 			wasError = true;
 		}
 
@@ -1195,7 +1195,7 @@ DOM_VK_ESCAPE = 27;
 	 */
 	$.fn.nextInSet = function( currentElement ) {
 		currentIndex = $( this ).index( $( currentElement ));
-		if ( $( this ).size() > currentIndex + 1 ) {
+		if ( $( this ).length > currentIndex + 1 ) {
 			return $( this ).eq( currentIndex + 1 );
 		} else {
 			return false;
@@ -1220,9 +1220,9 @@ DOM_VK_ESCAPE = 27;
 	 * Find the first node in the currently selected set of nodes
 	 */
 	$.fn.firstInSet = function() {
-		if ( $( this ).size() > 1 ) {
+		if ( $( this ).length > 1 ) {
 			return $( this ).eq( 0 );
-		} else if ( $( this ).size() > 0 ) {
+		} else if ( $( this ).length > 0 ) {
 			return $( this );
 		} else {
 			return false;
@@ -1234,9 +1234,9 @@ DOM_VK_ESCAPE = 27;
 	 * Find the last node in the currently selected set of nodes
 	 */
 	$.fn.lastInSet = function() {
-		if ( $( this ).size() > 1 ) {
-			return $( this ).eq( $( this ).size()-1 );
-		} else if ( $( this ).size() > 0 ) {
+		if ( $( this ).length > 1 ) {
+			return $( this ).eq( $( this ).length - 1 );
+		} else if ( $( this ).length > 0 ) {
 			return $( this );
 		} else {
 			return false;
