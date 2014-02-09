@@ -50,12 +50,12 @@
 }
 
 #jb-window.reactive {
-	background: transparent url(reactive-overlay.png) right top no-repeat;
+	background: transparent url(images/reactive-overlay.png) right top no-repeat;
 }
 
 
 #jb-window.loading #jb-window-inner {
-	background-image: url(loading-black-on-white.gif);
+	background-image: url(images/loading-black-on-white.gif);
 	background-position: center center;
 	background-repeat: no-repeat;
 }
@@ -84,7 +84,7 @@
 }
 
 #jb-window.error-no-content #jb-window-content {
-	background: transparent url(alert-64.png) left center no-repeat;
+	background: transparent url(images/alert-64.png) left center no-repeat;
 	padding-left: 70px;
 }
 
@@ -94,7 +94,7 @@
 		height: 0;
 		padding-top: 85px;
 		width: 49px;
-		background: transparent url(gallery-controls-sprite.png) left top no-repeat;
+		background: transparent url(images/gallery-controls-sprite.png) left top no-repeat;
 	}
 	#jb-gallery-next {
 		background-position: -49px top;

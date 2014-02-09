@@ -21,10 +21,10 @@
 }
 /* IE6 Fixed Position Jitter Fix */
 * html {
-	/*background-image: url(/assets/images/skin/bg-body-fluid-layout.jpg);*/
+	/*background-image: url(images/bg-body-fluid-layout.jpg);*/
 	background-attachment: fixed;
 }
 
 * html #jb-window.reactive {
-	background-image: url(/assets/images/skin/reactive-overlay.gif);
+	background-image: url(images/reactive-overlay.gif);
 }
