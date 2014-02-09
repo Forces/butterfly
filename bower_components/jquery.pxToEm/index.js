@@ -43,9 +43,9 @@ Number.prototype.pxToEm = String.prototype.pxToEm = function(settings){
 		When this happens, we calculate the correct body font-size (%) and multiply it by 16 (the standard browser font size) 
 		to get an accurate em value. */
 				
-	if (settings.scope == 'body' && jQuery.browser.msie && (parseFloat(jQuery('body').css('font-size')) / getWindowWidth()).toFixed(1) > 0.0) {
+	if (settings.scope == 'body' && $.browser.msie && (parseFloat($('body').css('font-size')) / getWindowWidth()).toFixed(1) > 0.0) {
 		var calcFontSize = function(){		
-			return (parseFloat(jQuery('body').css('font-size'))/getWindowWidth()).toFixed(3) * 16;
+			return (parseFloat($('body').css('font-size'))/getWindowWidth()).toFixed(3) * 16;
 		};
 		scopeVal = calcFontSize();
 	}

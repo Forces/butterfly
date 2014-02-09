@@ -1,0 +1,13 @@
+{
+  "name": "jquery.pxToEm",
+  "_cacheHeaders": {
+    "Last-Modified": "Fri, 01 Aug 2008 19:49:23 GMT",
+    "Content-Length": "2521",
+    "Content-Type": "text/javascript"
+  },
+  "main": "index.js",
+  "_source": "http://www.filamentgroup.com/examples/pxToEm/pxToEm.js",
+  "_target": "*",
+  "_originalSource": "http://www.filamentgroup.com/examples/pxToEm/pxToEm.js",
+  "_direct": true
+}

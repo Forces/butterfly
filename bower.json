@@ -1,0 +1,29 @@
+{
+  "name": "butterfly",
+  "version": "0.10.0",
+  "homepage": "http://irama.org/web/dhtml/butterfly/",
+  "authors": [
+    "Andrew Ramsden <andrew@irama.org>"
+  ],
+  "description": "An accessible lightbox implementation. Who woulda thunk it?",
+  "main": "src/js/jquery.butterfly.js",
+  "keywords": [
+    "lightbox",
+    "butterfly"
+  ],
+  "license": "GPL",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.6.1",
+    "jquery.history": "http://github.com/tkyk/jquery-history-plugin/raw/master/jquery.history.js",
+    "jquery.pxToEm": "http://www.filamentgroup.com/examples/pxToEm/pxToEm.js",
+    "jquery.resize-events": "http://irama.org/pkg/resize-events-0.7/jquery.resize-events.js"
+  }
+}

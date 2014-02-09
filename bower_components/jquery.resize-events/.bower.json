@@ -1,0 +1,15 @@
+{
+  "name": "jquery.resize-events",
+  "_cacheHeaders": {
+    "ETag": "\"18b8-4d9b116c09040\"",
+    "Last-Modified": "Sat, 06 Apr 2013 13:22:01 GMT",
+    "Content-Length": "6328",
+    "Content-Type": "application/javascript"
+  },
+  "_release": "e-tag:18b8-4d9b",
+  "main": "index.js",
+  "_source": "http://irama.org/pkg/resize-events-0.7/jquery.resize-events.js",
+  "_target": "*",
+  "_originalSource": "http://irama.org/pkg/resize-events-0.7/jquery.resize-events.js",
+  "_direct": true
+}

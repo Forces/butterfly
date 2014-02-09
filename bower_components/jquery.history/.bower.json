@@ -1,0 +1,15 @@
+{
+  "name": "jquery.history",
+  "_cacheHeaders": {
+    "ETag": "\"5942b710298192efaf818cce87d116ad\"",
+    "Content-Length": "6466",
+    "Content-Type": "text/plain; charset=utf-8",
+    "Content-Disposition": "inline"
+  },
+  "_release": "e-tag:5942b7102",
+  "main": "index.js",
+  "_source": "http://github.com/tkyk/jquery-history-plugin/raw/master/jquery.history.js",
+  "_target": "*",
+  "_originalSource": "http://github.com/tkyk/jquery-history-plugin/raw/master/jquery.history.js",
+  "_direct": true
+}

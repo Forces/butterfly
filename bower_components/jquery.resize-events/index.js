@@ -37,7 +37,7 @@ var ResizeEvents = {
 	initialised         : false,
 	intervalReference   : null,
 	textSizeTestElement : null,
-	eventElement        : jQuery(document),
+	eventElement        : $(document),
 	conf                : {
 		textResizeEvent          : 'x-text-resize',
 		windowResizeEvent        : 'x-window-resize',
@@ -86,7 +86,7 @@ var ResizeEvents = {
 		
 		// create text resize control element, and push it offscreen
 			ResizeEvents.textSizeTestElement = $(
-				'<span id="'+ResizeEvents.conf.textSizeTestElId+'" style="position: absolute; left: -9999px; '+
+				'<span id="'+ResizeEvents.conf.textSizeTestElId+'" style="position: absolute; left: -9999px; bottom: 0; '+
 				'font-size: 100%; font-family: Courier New, mono; margin: 0; padding: 0;">&nbsp;</span>'
 			).get(0);
 			
